@@ -1,0 +1,55 @@
+{% extends 'user_auth/base.html' %}
+{% block head %}
+    <style>
+        .margin-top{
+            margin-top : 30px;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="container">
+    <div class="row">
+    </div>
+    <div class="row">
+    <div class="col-md-4">
+        <div class="dropdown margin-top">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Active Sites
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                {% for site in active_sites %}
+                    <li><a href="#"> {{ site.site.name }} </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="dropdown margin-top">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Proposed Sites
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                {% for site in proposed_sites %}
+                    <li><a href="#"> {{ site.site.name }} </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="dropdown margin-top">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Inactive Sites
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                {% for site in inactive_sites %}
+                    <li><a href="#"> {{ site.site.name }} </a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

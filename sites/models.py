@@ -34,3 +34,11 @@ class UserSite(models.Model):
     updated_by = models.ForeignKey(User,blank=True,null=True,related_name='user_site_updated_user',on_delete=models.DO_NOTHING)
     is_valid = models.BooleanField(default=True)
 
+
+class SiteData(models.Model):
+    
+    user = models.ForeignKey(User,
+                related_name="user_site_data",on_delete=models.CASCADE)
+    site = models.ForeignKey(Site,related_name="site_user",on_delete=models.CASCADE)
+    measurement = models.IntegerField()
+    eventDate = models.DateTimeField()

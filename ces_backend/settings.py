@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user_auth',
-    'sites'
+    'sites',
+    'graphos',
+
 ]
 
 MIDDLEWARE = [
@@ -88,7 +90,7 @@ DATABASES = {
             'ENGINE': 'django.db.backends.postgresql_psycopg2', 
             'NAME': 'ces_backend',                    
             'USER': 'postgres',                      
-            'PASSWORD': 'password',                  
+            'PASSWORD': 'admin123',                  
             'HOST': '127.0.0.1',                     
             'PORT': '5432',                      
     },

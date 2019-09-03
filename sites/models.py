@@ -39,6 +39,8 @@ class SiteData(models.Model):
     
     user = models.ForeignKey(User,
                 related_name="user_site_data",on_delete=models.CASCADE)
+    name = models.CharField(max_length=500,blank=True,null=True)
     site = models.ForeignKey(Site,related_name="site_user",on_delete=models.CASCADE)
-    measurement = models.IntegerField()
+    instantaneous_value = models.IntegerField(blank=True,null=True)
+    lifetime_value = models.IntegerField(blank=True,null=True)
     eventDate = models.DateTimeField()

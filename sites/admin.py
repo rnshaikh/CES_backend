@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Site, UserSite
+from .models import Site, UserSite,SiteData
 # Register your models here.
 
 class SiteAdmin(admin.ModelAdmin):
@@ -16,3 +16,5 @@ class UserSiteAdmin(admin.ModelAdmin):
 
 admin.site.register(Site, SiteAdmin)
 admin.site.register(UserSite, UserSiteAdmin)
+admin.site.register(SiteData)
+

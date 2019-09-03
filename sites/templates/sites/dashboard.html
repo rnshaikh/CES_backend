@@ -19,7 +19,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 {% for site in active_sites %}
-                    <li><a href="#"> {{ site.site.name }} </a></li>
+                    <li><a href="{%url 'sites:get_data_object' site.site.id %}"> {{ site.site.name }} </a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -32,7 +32,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 {% for site in proposed_sites %}
-                    <li><a href="#"> {{ site.site.name }} </a></li>
+                    <li><a href="{%url 'sites:get_data_object' site.site.id %}"> {{ site.site.name }} </a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -45,7 +45,7 @@
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 {% for site in inactive_sites %}
-                    <li><a href="#"> {{ site.site.name }} </a></li>
+                    <li><a href="{%url 'sites:get_data_object' site.site.id %}"> {{ site.site.name }} </a></li>
                 {% endfor %}
             </ul>
         </div>

@@ -1,0 +1,144 @@
+{% extends 'user_auth/home.html'%}
+{% block head %}
+<script>
+    $(function() {
+      $( ".datepicker" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "1900:2012",
+        // You can put more options here.
+  
+      });
+    });
+    </script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="modal-dialog modal-sm">
+	<div class="modal-content">
+      		<div class="modal-header">
+        		<h1 class="modal-title color-style">Register</h1>
+     		</div>
+    <div class="modal-body">
+	<form action="" method="post" name="register">
+        {% csrf_token %}
+        <div class="row">
+			<div class="form-group col-md-12">
+				{% for error in form.email.errors %}
+					<span style="color:red">{{ error }}</span><br>
+				{% endfor %}
+            	<label for="email" class="control-label">Email</label><br>
+            	{{ form.email }}  
+        	</div>
+        </div>
+        <div class="row">
+			<div class="form-group col-md-12">
+				{% for error in form.full_name.errors %}
+					<span style="color:red">{{ error }}</span><br>
+				{% endfor %}
+            	<label for="full_name" class="control-label">Full Name</label><br>
+            	{{ form.full_name }}  
+        	</div>
+        </div>
+        <div class="row">
+			<div class="form-group col-md-12">
+				{% for error in form.password.errors %}
+					<span style="color:red">{{ error }}</span><br>
+				{% endfor %}
+            	<label for="password" class="control-label">password</label><br>
+            	{{ form.password }}  
+        	</div>
+        </div>
+        <div class="row">
+			<div class="form-group col-md-12">
+				{% for error in form.confirm_password.errors %}
+					<span style="color:red">{{ error }}</span><br>
+				{% endfor %}
+            	<label for="confrim_password" class="control-label">Confirm Password</label><br>
+            	{{ form.confirm_password }}  
+        	</div>
+        </div>
+        <div class="row">
+			<div class="form-group col-md-12">
+				{% for error in form.date_of_birth.errors %}
+					<span style="color:red">{{ error }}</span><br>
+				{% endfor %}
+            	<label for="date_of_birth" class="control-label">Date Of Birth</label><br>
+            	{{ form.date_of_birth }}  
+        	</div>
+        </div>
+        <div class="row">
+			<div class="form-group col-md-12">
+				{% for error in form.address.errors %}
+					<span style="color:red">{{ error }}</span><br>
+				{% endfor %}
+            	<label for="address" class="control-label">Address</label><br>
+            	{{ form.address }}  
+        	</div>
+        </div>
+        <div class="row">
+			<div class="form-group col-md-12">
+				{% for error in form.company_name.errors %}
+					<span style="color:red">{{ error }}</span><br>
+				{% endfor %}
+            	<label for="company_name" class="control-label">Company Name</label><br>
+            	{{ form.company_name }}  
+        	</div>
+        </div>
+        <div class="row">
+			<div class="form-group col-md-12">
+				{% for error in form.city.errors %}
+					<span style="color:red">{{ error }}</span><br>
+				{% endfor %}
+            	<label for="city" class="control-label">City</label><br>
+            	{{ form.city }}  
+        	</div>
+        </div>
+        <div class="row">
+			<div class="form-group col-md-12">
+				{% for error in form.state.errors %}
+					<span style="color:red">{{ error }}</span><br>
+				{% endfor %}
+            	<label for="state" class="control-label">State</label><br>
+            	{{ form.state }}  
+        	</div>
+        </div>
+        <div class="row">
+			<div class="form-group col-md-12">
+				{% for error in form.zip_code.errors %}
+					<span style="color:red">{{ error }}</span><br>
+				{% endfor %}
+            	<label for="zip_code" class="control-label">Zip Code</label><br>
+            	{{ form.zip_code }}  
+        	</div>
+        </div>
+        <div class="row">
+			<div class="form-group col-md-12">
+				{% for error in form.mobile_num.errors %}
+					<span style="color:red">{{ error }}</span><br>
+				{% endfor %}
+            	<label for="mobile_num" class="control-label">Mobile No.</label><br>
+            	{{ form.mobile_num }}  
+        	</div>
+        </div>
+        <div class="row">
+			<div class="form-group col-md-12">
+				{% for error in form.user_type.errors %}
+					<span style="color:red">{{ error }}</span><br>
+				{% endfor %}
+            	<label for="user_type" class="control-label">User Type</label><br>
+            	{{ form.user_type}}  
+        	</div>
+        </div>
+        <div class="row">
+			<div class="form-group col-md-12">
+                <input class="form-control btn btn-success" type="submit" value="submit">
+        	</div>
+    	</div>
+	</form>
+	</div>
+	</div>
+	</div>
+</div>
+{% endblock %}

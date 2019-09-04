@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from django import forms
 from django.conf import settings
@@ -10,17 +11,10 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy,reverse
 from user_auth.models import User
 from sites.models import UserSite,SiteData,Site
-data =  [
-        ['Year', 'Sales', 'Expenses'],
-        [2004, 1000, 400],
-        [2005, 1170, 460],
-        [2006, 660, 1120],
-        [2007, 1030, 540]
-    ]
-from graphos.sources.simple import SimpleDataSource
-from graphos.renderers.gchart import LineChart
-from graphos.renderers import flot
-from graphos.sources.model import ModelDataSource
+from django.db.models.functions import Cast
+from django.db.models.functions import TruncMonth, TruncYear, TruncSecond
+from django.db.models import DateTimeField,IntegerField,CharField
+from django.db.models.functions import ExtractYear
 
 
 
@@ -41,15 +35,35 @@ def getsiteobject(request):
 def getdataobject(request,pk):
     import pdb
     pdb.set_trace()
-    queryset = SiteData.objects.filter(user=request.user.id,site=pk)
-    site_data = queryset
+    page_view_queryset = SiteData.objects.filter(name="PageView", user=request.user.id,site=pk).order_by('eventDate')
+    like_count_queryset = SiteData.objects.filter(name="LikeCount", user=request.user.id,site=pk).order_by('eventDate')
+    
     site_info = Site.objects.filter(id=pk)[0]
-    #chart = LineChart(SimpleDataSource(data=data),height=500, width=600)
-    data_source = ModelDataSource(queryset, fields=['instantaneous_value', 'eventDate'])
-    chart = flot.LineChart(data_source,options={"title":"Amazon"})
+    page_view_instantaneous_values_list = []
+    page_view_eventDate_list = []
+    page_view_lifetime_value_list = []
+
+    like_count_instantaneous_values_list = []
+    like_count_eventDate_list = []
+    like_count_lifetime_value_list = []
+
+    for entry in page_view_queryset:
+        page_view_instantaneous_values_list.append(entry.instantaneous_value)
+        page_view_eventDate_list.append(entry.eventDate.isoformat())
+        page_view_lifetime_value_list.append(entry.lifetime_value)
+
+    for entry in like_count_queryset:
+        like_count_instantaneous_values_list.append(entry.instantaneous_value)
+        like_count_eventDate_list.append(entry.eventDate.isoformat())
+        like_count_lifetime_value_list.append(entry.lifetime_value)
+
     context = {
-        "site_data": site_data,
         "site_info": site_info,
-        "chart":chart
+        "page_view_instantaneous_values_list": json.dumps(page_view_instantaneous_values_list),
+        "page_view_event_data_list": json.dumps(page_view_eventDate_list),
+        "page_view_lifetime_value_list": json.dumps(page_view_lifetime_value_list),
+        "like_count_instantaneous_values_list": json.dumps(like_count_instantaneous_values_list),
+        "like_count_event_data_list": json.dumps(like_count_eventDate_list),
+        "like_count_lifetime_value_list": json.dumps(like_count_lifetime_value_list)
     }
     return render(request, 'sites/site_detail.html',context)

@@ -33,7 +33,7 @@ class CreateUserView(CreateView):
             User = form.save()
             User.set_password(password)
             User.save()
-            msg = "Hello"+User.full_name+"registered successfully"
+            msg = "Hello"+User.full_name+" your signup is done and will be authorized by admin within 24 hours via mail/call.Thanks for your patience."
             messages.success(request, msg)
             return HttpResponseRedirect(reverse_lazy('home'))
         return render(request, 'user_auth/user_form.html', {'form': form})
@@ -54,7 +54,7 @@ def login_view(request):
                     login(request, user)
                     response = {'status': 'success',
                                 'message': "good"}
-                    return HttpResponseRedirect(reverse_lazy('home'))
+                    return HttpResponseRedirect(reverse('sites:get_site_object'))
                 else:
                     messages.success(request, "User is inactive try again.")
                     return HttpResponseRedirect(reverse_lazy('home'))

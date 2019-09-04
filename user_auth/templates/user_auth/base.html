@@ -63,7 +63,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="">Blogger</a>
+      <a class="navbar-brand" href="{% url 'home' %}">Blogger</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
@@ -88,7 +88,9 @@
 {% endblock %}
 
   <footer class="container-fluid bg-4 text-center">
-    <p class="middle">Blogger best blogging platform <a href="#">Rizwan Shaikh</a></p> 
+    <p class="middle">Blogger best blogging platform <a href="#">Rizwan Shaikh</a></p>
+    {% block footer %}
+    {% endblock %} 
   </footer>
   </body>
 </html>	

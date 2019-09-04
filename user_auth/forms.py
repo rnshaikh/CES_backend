@@ -3,7 +3,9 @@ from user_auth.models import User
 
 class UserCreateForm(forms.ModelForm):
 
-    confirm_password = forms.CharField()
+    confirm_password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput)
+
 
     class Meta:
         model = User

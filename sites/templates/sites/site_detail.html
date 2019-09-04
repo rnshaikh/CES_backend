@@ -1,15 +1,52 @@
 {% extends 'user_auth/base.html' %}
 {% block head %}
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
     google.load("visualization", "1", {packages:["corechart"]});
-</script>
+</script> -->
+
+<!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.js"></script> -->
+    <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.categories.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js" type="text/javascript"></script> -->
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+
 {% endblock %}
 {% block content %}
-    <div class="container">
+<div class="container">
         <div class="row">
             <div class="col-md-6">
-                {{chart.as_html }}
+                    <div>
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                              <li role="presentation" class="active"><a href="#pageview" aria-controls="pageview" role="tab" data-toggle="tab">Page Views</a></li>
+                              <li role="presentation"><a href="#likecount" aria-controls="likecount" role="tab" data-toggle="tab">Like Count</a></li>
+                            </ul>
+                            
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                              <div role="tabpanel" class="tab-pane active" id="pageview">
+                                    <div id="chart">
+
+                                    </div>
+                                    <div id="inschart">
+
+                                    </div>
+            
+                              </div>
+                              <div role="tabpanel" class="tab-pane" id="likecount">
+                                    <div id="likechart">
+
+                                    </div>
+                                    <div id="likeinschart">
+
+                                    </div>
+
+                              </div>
+                            </div>
+                            
+                            </div>
 
             </div>
             <div class="col-md-6">
@@ -19,5 +56,83 @@
 
         </div>
     </div>
+
+{% endblock %}
+{% block footer %}
+<script>
+    Highcharts.chart('chart', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'page view count (Lifetime value)'
+        },
+        xAxis: {
+            categories: {{  page_view_event_data_list |safe }}
+        },
+        series: [{
+            name: 'Lifetime Value',
+            data: {{ page_view_lifetime_value_list }},
+            color: 'green'
+        }]
+    });
+  </script>
+  <script>
+      Highcharts.chart('inschart', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'page view count (Instantaneous value)'
+        },
+        xAxis: {
+            categories: {{  page_view_event_data_list |safe }}
+        },
+        series: [{
+            name: 'Instantaneous Value',
+            data: {{ page_view_instantaneous_values_list }},
+            color: 'red'
+        }]
+    });
+  </script>
+
+<script>
+        Highcharts.chart('likechart', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Like count (Lifetime value)'
+            },
+            xAxis: {
+                categories: {{  like_count_event_data_list |safe }}
+            },
+            series: [{
+                name: 'Lifetime Value',
+                data: {{ like_count_lifetime_value_list }},
+                color: 'green'
+            }]
+        });
+      </script>
+      <script>
+          Highcharts.chart('likeinschart', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'like count (Instantaneous value)'
+            },
+            xAxis: {
+                categories: {{  like_count_event_data_list |safe }}
+            },
+            series: [{
+                name: 'Instantaneous Value',
+                data: {{ like_count_instantaneous_values_list }},
+                color: 'red'
+            }]
+        });
+      </script>
+
+
 
 {% endblock %}

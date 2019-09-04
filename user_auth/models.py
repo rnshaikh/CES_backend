@@ -64,7 +64,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     class UserType(Enum):
 
         Developer = 0
-        Examiner = 1
+        Reviewer = 1
 
         @classmethod
         def as_tuple(cls):

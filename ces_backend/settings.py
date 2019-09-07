@@ -156,11 +156,11 @@ CELERY_TIMEZONE = "Asia/Calcutta"
 app.conf.beat_schedule = {
     'task1': {
         'task': 'sites.tasks.generate_page_view_data_object',
-        'schedule': 10.0,
+        'schedule': 300.0,
     },
     'task2': {
         'task': 'sites.tasks.generate_like_count_data_object',
-        'schedule': 10.0,
+        'schedule': 300.0,
     }
 }
 

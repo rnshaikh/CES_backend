@@ -1,28 +1,31 @@
 import json
 from django.shortcuts import render
-from django import forms
 from django.conf import settings
 from django.contrib import messages
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.contrib.auth import (authenticate, login, logout,)
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy,reverse
 from user_auth.models import User
 from sites.models import UserSite,SiteData,Site
-from django.db.models.functions import Cast
-from django.db.models.functions import TruncMonth, TruncYear, TruncSecond
-from django.db.models import DateTimeField,IntegerField,CharField
-from django.db.models.functions import ExtractYear
 
 
-
+@login_required(login_url="/user/login")
 def getsiteobject(request):
+    """
+        This view is used to get sites object related to particular users depending on developer
+        get its object and if examiner gets all the objects of all developer.
+
+    """
+    if(request.user.user_type==1):
+        active_site= UserSite.objects.filter(site__status=1).distinct('site')
+        propsed_site = UserSite.objects.filter(site__status=2).distinct('site')
+        inactive_site = UserSite.objects.filter(site__status=0).distinct('site')    
+    else:
+        active_site = UserSite.objects.filter(user=request.user.id,site__status=1)
+        propsed_site = UserSite.objects.filter(user=request.user.id,site__status=2)
+        inactive_site = UserSite.objects.filter(user=request.user.id,site__status=0)
     
-    active_site = UserSite.objects.filter(user=request.user.id,site__status=1)
-    propsed_site = UserSite.objects.filter(user=request.user.id,site__status=2)
-    inactive_site = UserSite.objects.filter(user=request.user.id,site__status=0)
     context = {
         "active_sites" : active_site,
         "inactive_sites": inactive_site,
@@ -31,13 +34,25 @@ def getsiteobject(request):
     print("Context", context)
     return render(request, 'sites/dashboard.html',context)
 
-
+@login_required(login_url="/user/login")
 def getdataobject(request,pk):
-    import pdb
-    pdb.set_trace()
-    page_view_queryset = SiteData.objects.filter(name="PageView", user=request.user.id,site=pk).order_by('eventDate')
-    like_count_queryset = SiteData.objects.filter(name="LikeCount", user=request.user.id,site=pk).order_by('eventDate')
+
+    """ 
+    Get data object is used to get data perticular sites related to login user.
+    """
     
+    page_view_queryset =[]
+    like_count_queryset=[]
+
+    if(request.user.user_type==0):
+        page_view_queryset = SiteData.objects.filter(name = settings.PAGE_VIEW, user=request.user.id,site=pk).order_by('eventDate')
+        like_count_queryset = SiteData.objects.filter(name = settings.LIKE_COUNT, user=request.user.id,site=pk).order_by('eventDate')
+    
+    elif (request.user.user_type==1):
+        page_view_queryset = SiteData.objects.filter(name= settings.PAGE_VIEW,site=pk).order_by('eventDate')
+        like_count_queryset = SiteData.objects.filter(name= settings.LIKE_COUNT,site=pk).order_by('eventDate')
+
+
     site_info = Site.objects.filter(id=pk)[0]
     page_view_instantaneous_values_list = []
     page_view_eventDate_list = []

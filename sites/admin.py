@@ -14,7 +14,13 @@ class UserSiteAdmin(admin.ModelAdmin):
     ordering = ('user','site','is_valid')
     search_fields = ('user',)
 
+class SiteDataAdmin(admin.ModelAdmin):
+    list_display = ('name','user', 'site','instantaneous_value','lifetime_value',
+                    )
+    ordering = ('user','site')
+    search_fields = ('user',)
+
 admin.site.register(Site, SiteAdmin)
 admin.site.register(UserSite, UserSiteAdmin)
-admin.site.register(SiteData)
+admin.site.register(SiteData,SiteDataAdmin)
 

@@ -7,8 +7,7 @@ from django.db.models import Q
 class CustomBackend(ModelBackend):  # requires to define two functions authenticate and get_user
 
     def authenticate(self, request, username=None, password=None, **kwargs):
-        import pdb
-        pdb.set_trace()
+
         UserModel = get_user_model()
 
         try:
@@ -32,7 +31,9 @@ class CustomBackend(ModelBackend):  # requires to define two functions authentic
             return None
 
     def get_user(self, user_id):
+        
         UserModel = get_user_model()
+        
         try:
             return UserModel.objects.get(pk=user_id)
         except UserModel.DoesNotExist:

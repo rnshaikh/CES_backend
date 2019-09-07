@@ -37,9 +37,17 @@ class UserSite(models.Model):
 
 class SiteData(models.Model):
     
+    class Name_Type(Enum):  
+        Page_View = "PageView"
+        Like_Count = "LikeCount"
+
+        @classmethod
+        def as_tuple(cls):
+            return ((item.value, item.name.replace('_', ' ')) for item in cls)
+
     user = models.ForeignKey(User,
                 related_name="user_site_data",on_delete=models.CASCADE)
-    name = models.CharField(max_length=500,blank=True,null=True)
+    name = models.CharField(max_length=255,choices=Name_Type.as_tuple(),blank=True,null=True)
     site = models.ForeignKey(Site,related_name="site_user",on_delete=models.CASCADE)
     instantaneous_value = models.IntegerField(blank=True,null=True)
     lifetime_value = models.IntegerField(blank=True,null=True)

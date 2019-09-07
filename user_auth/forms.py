@@ -101,6 +101,45 @@ class UserLoginForm(forms.Form):
 								   'data-maxlength':'16'}))
 
 
+class ForgotPasswordForm(forms.Form):
+
+    email =forms.CharField(label="Email" ,
+                        widget=forms.TextInput(
+                        attrs={'size':'100%' , 
+                        'class':'form-control',
+                        'data-minlength':'6'}))
+
+    password=forms.CharField(label="Password" , 
+                        widget=forms.PasswordInput(
+                        attrs={'size':'100%' , 
+                        'class':'form-control',
+                        'data-minlength':'8',
+                        'data-maxlength':'16'}))
+
+    confirm_password=forms.CharField(label="Password" , 
+                        widget=forms.PasswordInput(
+                        attrs={'size':'100%' , 
+                        'class':'form-control',
+                        'data-minlength':'8',
+                        'data-maxlength':'16'}))
+
+    def clean(self): 
+        import pdb
+        pdb.set_trace()
+        
+        password = self.cleaned_data.get('password') 
+        confirm_password = self.cleaned_data.get('confirm_password') 
+
+        if len(password) > 8: 
+            self._errors['password'] = self.error_class([ 
+            'Should be a less than 8 characters required']) 
+        if( password != confirm_password):
+            self._errors['password'] = self.error_class([ 
+            'password and confrim_password should be same'])
+
+        return self.cleaned_data 
+
+
 
 class UserProfileForm(forms.ModelForm):
     # user_type = forms.CharField()

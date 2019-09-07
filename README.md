@@ -7,5 +7,20 @@ Installtion steps:
 3) then you can start using python manage.py runserver
 
 
+
+Details:
+
+1) Home page of site:
 ![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/home.png)
-![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+
+2) Login Page
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/login.png)
+
+3) Register Page
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/regsiter.png)
+
+3) Developer dashboard will see 3 dropdown with its linked blogging sites linked done by admin.
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/dashboardsites.png)
+
+
+

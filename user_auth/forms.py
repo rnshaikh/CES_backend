@@ -3,6 +3,9 @@ from user_auth.models import User
 
 class UserCreateForm(forms.ModelForm):
 
+    """
+        User Creation form used for registering user.
+    """
     confirm_password = forms.CharField(widget=forms.PasswordInput)
     password = forms.CharField(widget=forms.PasswordInput)
 
@@ -86,22 +89,29 @@ class UserCreateForm(forms.ModelForm):
 
 
 class UserLoginForm(forms.Form):
+    """
+        User Login form is used to render login view.
+    """
+    email =forms.CharField(label="Email" ,
+                            widget=forms.TextInput(
+                            attrs={'size':'100%' , 
+                            'class':'form-control',
+                            'data-minlength':'6'}))
 
-	email =forms.CharField(label="Email" ,
-					widget=forms.TextInput(
-							attrs={'size':'100%' , 
-									'class':'form-control',
-									'data-minlength':'6'}))
-
-	password=forms.CharField(label="Password" , 
-					widget=forms.PasswordInput(
-							attrs={'size':'100%' , 
-								   'class':'form-control',
-								   'data-minlength':'8',
-								   'data-maxlength':'16'}))
+    password=forms.CharField(label="Password" , 
+                            widget=forms.PasswordInput(
+                            attrs={'size':'100%' , 
+                            'class':'form-control',
+                            'data-minlength':'8',
+                            'data-maxlength':'16'}))
 
 
 class ForgotPasswordForm(forms.Form):
+
+    """
+        Forgot password form is used to rendered forgot password view .
+
+    """
 
     email =forms.CharField(label="Email" ,
                         widget=forms.TextInput(
@@ -140,7 +150,12 @@ class ForgotPasswordForm(forms.Form):
 
 
 class UserProfileForm(forms.ModelForm):
-    # user_type = forms.CharField()
+
+    """
+        User profile form is used to rendered User profile detail and update view.
+        
+    """
+
     class Meta:
         model = User
         fields = ('email','full_name','mobile_num','company_name',
@@ -195,7 +210,5 @@ class UserProfileForm(forms.ModelForm):
 
         self.fields['user_type'].widget.attrs['disabled'] = 'disabled'
         self.fields['email'].widget.attrs['readonly'] = True   
-        
-        
         self.fields['full_name'].required = True
         

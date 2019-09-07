@@ -7,4 +7,4 @@ Installtion steps:
 3) then you can start using python manage.py runserver
 
 
-![alt home page][screenshots/home.png]
+![alt home page][https://github.com/rnshaikh/CES_backend/master/screenshots/home.png]

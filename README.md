@@ -19,15 +19,22 @@ Details:
 3) Register Page
 ![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/register.png)
 
-4) Developer dashboard will see 3 dropdown with its linked blogging sites linked done by admin.
+4) Forgot Password Page
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/forgotpassword.png)
+
+5) Developer dashboard will see 3 dropdown with its linked blogging sites linked done by admin.
 ![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/dashboardsites.png)
 
-5) Developer Sites detail page where it will show graph of instantaneous value and lifetime value against datetime of
+6) Developer Sites detail page where it will show graph of instantaneous value and lifetime value against datetime of
 2 params namely page views and like count.  
 
 ![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/site_detail1.png)
 
-![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/sitedetail2.png)
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/sitedetail3.png)
+
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/sitedetail4.png)
+
+
 
 
 

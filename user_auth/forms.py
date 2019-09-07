@@ -124,8 +124,6 @@ class ForgotPasswordForm(forms.Form):
                         'data-maxlength':'16'}))
 
     def clean(self): 
-        import pdb
-        pdb.set_trace()
         
         password = self.cleaned_data.get('password') 
         confirm_password = self.cleaned_data.get('confirm_password') 

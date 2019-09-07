@@ -86,7 +86,7 @@ Details:
 
 7) Examiner views of site data where he can see all data object.
 
-![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/examiner-data.png)
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/examiner_data.png)
 
 ![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/examiner-data2.png)
 

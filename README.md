@@ -9,9 +9,9 @@ Installtion steps:
 
 DB_Dump:
 
-1) There is dump file in dumps directory where you cant take dump of database using following command
+1) There is dump file in db_dump directory where you cant take dump of database using following command
     a) create database ces_backend_test
-    b) psql ces_backend_test < ces_backend.sql
+    b) psql ces_backend_test < ces_backend_test.sql
 
 
 This db has following account.

@@ -7,6 +7,47 @@ Installtion steps:
 3) then you can start using python manage.py runserver
 
 
+DB_Dump:
+
+1) There is dump file in dumps directory where you cant take dump of database using following command
+    a) create database ces_backend_test
+    b) psql ces_backend_test < ces_backend.sql
+
+
+This db has following account.
+
+1) Admin
+email : admin@example.com
+password : admin123
+
+2) Developer:
+email : matt.hamil@example.com, pat.jen@example.com, sara.covington@example.co
+password: password
+
+3) Examiner: 
+email : james.vick@example.com
+password : password
+
+
+Sites:
+1) blogger, blogcupid, tenblogger, gamesweek, tenblogger as active sites, Nine as proposed site, Ten as inactive site.
+
+
+Site Data Param:
+1) Page View 2)Like Count
+
+
+Starting Cron job you have run following command in two separate terminal
+
+1) celery -A ces_backend worker -l info -E
+
+2) celery -A ces_backend beat -l info
+
+
+
+If you dont take dump of sql file . you have to create all the user's account , sites as well insert site data for users in order to start cron.
+
+
 
 Details:
 

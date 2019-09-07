@@ -35,6 +35,44 @@ Details:
 ![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/sitedetail4.png)
 
 
+7) Update Progile page.
 
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/userprofile.png)
+
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/userprofile2.png)
+
+
+
+7) Examiner views of site data where he can see all data object.
+
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/examiner-data.png)
+
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/examiner-data2.png)
+
+
+6) Admin Dashboard
+
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/admindashboard.png)
+
+
+7) Admin : User table
+
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/usertable.png)
+
+
+8) Admin : Site table
+
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/sitetble.png)
+
+
+9) Admin : User-Site table
+
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/usersite.png)
+
+
+
+7) Admin : Site data table
+
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/user_data.png)
 
 

@@ -27,4 +27,7 @@ Details:
 
 ![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/site_detail1.png)
 
+![alt home page](https://raw.githubusercontent.com/rnshaikh/CES_backend/master/screenshots/sitedetail2.png)
+
+
 
